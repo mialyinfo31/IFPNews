@@ -2,15 +2,18 @@ package com.company.Model;
 
 public class Note {
     private int id_note;
-    private int id_news;
-    private int id_journaliste;
+    private int noteValue;
+    private boolean isValid;
+    private String comment;
+    private int fk_news;
+    private int fk_journaliste;
 
     /**
      * Constructor
      */
-    public Note(int id_news, int id_journaliste) {
-        this.id_news = id_news;
-        this.id_journaliste = id_journaliste;
+    public Note(int fk_news, int fk_journaliste) {
+        this.fk_news = fk_news;
+        this.fk_journaliste = fk_journaliste;
     }
     /**
      * Getter and setter
@@ -19,19 +22,35 @@ public class Note {
         return id_note;
     }
 
-    public int getId_news() {
-        return id_news;
+    public int getNoteValue() {
+        return noteValue;
     }
 
-    public int getId_journaliste() {
-        return id_journaliste;
+    public boolean isValid() {
+        return isValid;
     }
 
-    public void setId_news(int id_news) {
-        this.id_news = id_news;
+    public String getComment() {
+        return comment;
     }
 
-    public void setId_journaliste(int id_journaliste) {
-        this.id_journaliste = id_journaliste;
+    public int getFk_news() {
+        return fk_news;
+    }
+
+    public int getFk_journaliste() {
+        return fk_journaliste;
+    }
+
+    public void setNoteValue(int noteValue) {
+        this.noteValue = noteValue;
+    }
+
+    public void setValid(boolean valid) {
+        isValid = valid;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 }

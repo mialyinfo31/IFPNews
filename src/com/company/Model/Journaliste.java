@@ -2,9 +2,7 @@ package com.company.Model;
 
 public class Journaliste {
     private int id_journaliste;
-
     private String login;
-
     private int credit;
 
     /**
@@ -13,10 +11,13 @@ public class Journaliste {
     public Journaliste() {
     }
 
-    public Journaliste(int id_journaliste, String journaliste, int credit) {
-        this.id_journaliste = id_journaliste;
-        this.login = journaliste;
+    public Journaliste( String login, int credit) {
+        super();
+        this.login = login;
         this.credit = credit;
+    }
+
+    public Journaliste(int idJournaliset, String journalisteName, int journalisteCredit) {
     }
 
     /**
@@ -29,6 +30,14 @@ public class Journaliste {
 
     public String getLogin() {
         return login;
+    }
+
+    public void setId_journaliste(int id_journaliste) {
+        this.id_journaliste = id_journaliste;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public int getCredit() {

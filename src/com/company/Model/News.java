@@ -2,16 +2,16 @@ package com.company.Model;
 
 public class News {
     private int id_news;
-    private String titre;
-    private String contenu;
+    private String title;
+    private String content;
     private Long Date;
     private int id_journalist;
 
     /**Constructor
      */
-    public News(String titre, String contenu, Long date, int id_journalist) {
-        this.titre = titre;
-        this.contenu = contenu;
+    public News(String title, String content, Long date, int id_journalist) {
+        this.title = title;
+        this.content = content;
         Date = date;
         this.id_journalist = id_journalist;
     }
@@ -21,12 +21,12 @@ public class News {
         return id_news;
     }
 
-    public String getTitre() {
-        return titre;
+    public String getTitle() {
+        return title;
     }
 
-    public String getContenu() {
-        return contenu;
+    public String getContent() {
+        return content;
     }
 
     public Long getDate() {
@@ -37,12 +37,12 @@ public class News {
         return id_journalist;
     }
 
-    public void setTitre(String titre) {
-        this.titre = titre;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public void setContenu(String contenu) {
-        this.contenu = contenu;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public void setId_journalist(int id_journalist) {
