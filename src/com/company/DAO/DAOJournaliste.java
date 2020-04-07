@@ -1,5 +1,6 @@
 package com.company.DAO;
 
+import com.company.ConnexionJDBC;
 import com.company.Model.Journaliste;
 import java.sql.*;
 import java.util.ArrayList;
@@ -21,7 +22,6 @@ public class DAOJournaliste {
     public static List<Journaliste> journalisteList = new ArrayList<>();
     public static Journaliste journaliste = new Journaliste() ;
 
-
     /**
      * EXCECUTE QUERY
      * @throws SQLException
@@ -33,8 +33,7 @@ public class DAOJournaliste {
         Statement statement= null;
         try{
             //Pour travailler avec Tomcat et wamp Rajouter :
-            DriverManager.registerDriver(new com.mysql.jdbc.Driver());
-            connection  = DriverManager.getConnection(URL, LOGIN, PASSWORD); //La connexion
+            connection = ConnexionJDBC.ouvrirConnexion();
             statement= connection.createStatement();
             ResultSet resultSet= statement.executeQuery(QUERY_FIND_ALL_JOURNALISTE);
             while(resultSet.next()) {
@@ -44,13 +43,7 @@ public class DAOJournaliste {
             }
         }
         finally{
-            if(connection!= null) {// On ferme la connexion
-                try{
-                    connection.close();
-                } catch(final SQLException e) {
-                    e.printStackTrace();
-                }
-            }
+            ConnexionJDBC.femerConnexion(connection);
         }
     }
 
@@ -59,7 +52,6 @@ public class DAOJournaliste {
             int idJournalisetBDD = (int) resultSet.getLong(1);
             String journalisteNameBDD = resultSet.getString(2);
             int journalisteCreditBDD = resultSet.getInt(3);
-
             Journaliste journaliste = new Journaliste(
                     idJournalisetBDD,
                     journalisteNameBDD,
@@ -76,7 +68,7 @@ public class DAOJournaliste {
         Connection connection= null;
         PreparedStatement preparedStatement = null;
         try {
-            connection = DriverManager.getConnection(URL, LOGIN, PASSWORD);
+            connection = ConnexionJDBC.ouvrirConnexion();
             preparedStatement = connection.prepareStatement(QUERY_INSERT_JOURNALISTE);
             // Remplir la requête
             preparedStatement.setString(1, journaliste.getLogin());
@@ -84,13 +76,7 @@ public class DAOJournaliste {
             // Lancer la requête
             preparedStatement.executeUpdate();
         } finally{
-            if(connection!= null) {// On ferme la connexion
-                try{
-                    connection.close();
-                } catch(final SQLException e) {
-                    e.printStackTrace();
-                }
-            }
+            ConnexionJDBC.femerConnexion(connection);
         }
     }
 
